@@ -1,2 +1,2 @@
 # Grocy
-Grocery Store Android App - Mobile Programming Project
+Grocery Store Android App (Ongoing) - Mobile Programming Project
