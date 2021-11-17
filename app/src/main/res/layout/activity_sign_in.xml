@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingHorizontal="48dp"
+    tools:context=".SignInActivity">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_grocy"
+        android:layout_marginBottom="36dp"/>
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="Email address"
+        android:textSize="12sp"
+        android:fontFamily="@font/montserrat_regular"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_background"/>
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textSize="12sp"
+        android:fontFamily="@font/montserrat_regular"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/rounded_background"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Forgot Password?"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/orange"
+        android:layout_marginBottom="52dp"
+        android:onClick="goToForgotPassword"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_background_dark"
+        android:layout_marginBottom="16dp"
+        android:onClick="doSignIn"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/orange"
+        android:background="@drawable/rounded_background"
+        android:layout_marginBottom="58dp"
+        android:onClick="goToSignUp"/>
+
+    <!-- Define an ID for the button control. -->
+    <com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton
+        android:id="@+id/HuaweiIdAuthButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="6dp"
+        app:hwid_corner_radius="hwid_corner_radius_large"
+        app:hwid_button_theme="hwid_button_theme_full_title"/>
+
+</LinearLayout>
