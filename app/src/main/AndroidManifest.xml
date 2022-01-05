@@ -4,6 +4,7 @@
     <!-- check network permissions -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- check wifi state -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_grocy_round"
         android:supportsRtl="true"
-        android:theme="@style/GrocyTheme">
+        android:theme="@style/Theme.Grocy">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
         <activity
             android:name=".ChangePasswordActivity"
             android:exported="true" />
