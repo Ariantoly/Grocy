@@ -10,70 +10,67 @@
     tools:context=".SignInActivity">
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_grocy"
-        android:layout_marginBottom="36dp"/>
-
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Email address"
-        android:textSize="12sp"
-        android:fontFamily="@font/montserrat_regular"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_background"/>
-
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:textSize="12sp"
-        android:fontFamily="@font/montserrat_regular"
-        android:paddingHorizontal="12dp"
-        android:paddingVertical="8dp"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/rounded_background"/>
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="Forgot Password?"
+        android:text="Grocy"
+        android:textColor="@color/orange"
+        android:textSize="30sp"
+        android:fontFamily="@font/montserrat_bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="For Consumer"
         android:fontFamily="@font/montserrat_regular"
-        android:textColor="@color/orange"
-        android:layout_marginBottom="52dp"
-        android:onClick="goToForgotPassword"/>
+        android:layout_marginBottom="100dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_sign_in"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:textAllCaps="false"
-        android:fontFamily="@font/montserrat_bold"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_background_dark"
-        android:layout_marginBottom="16dp"
-        android:onClick="doSignIn"/>
+<!--    Uncomment these code if you don't want to login via Huawei ID-->
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:textAllCaps="false"
-        android:fontFamily="@font/montserrat_bold"
-        android:textColor="@color/orange"
-        android:background="@drawable/rounded_background"
-        android:layout_marginBottom="58dp"
-        android:onClick="goToSignUp"/>
+<!--    <EditText-->
+<!--        android:id="@+id/et_email"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:hint="@string/email"-->
+<!--        android:textSize="12sp"-->
+<!--        android:fontFamily="@font/montserrat_regular"-->
+<!--        android:paddingHorizontal="12dp"-->
+<!--        android:paddingVertical="8dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:background="@drawable/rounded_background"/>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/et_password"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:hint="@string/password"-->
+<!--        android:textSize="12sp"-->
+<!--        android:fontFamily="@font/montserrat_regular"-->
+<!--        android:paddingHorizontal="12dp"-->
+<!--        android:paddingVertical="8dp"-->
+<!--        android:layout_marginBottom="6dp"-->
+<!--        android:background="@drawable/rounded_background"/>-->
+
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btn_sign_in"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Sign In"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:fontFamily="@font/montserrat_bold"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:background="@drawable/rounded_background_dark"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:onClick="doSignIn"/>-->
+
+<!--    Uncomment these if you don't want to login via Huawei ID-->
 
     <!-- Define an ID for the button control. -->
     <com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton
