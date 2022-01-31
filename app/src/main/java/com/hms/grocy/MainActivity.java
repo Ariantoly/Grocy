@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.location.Location;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 import com.hms.grocy.fragment.CartFragment;
 import com.hms.grocy.fragment.HomeFragment;
 import com.hms.grocy.fragment.ProfileFragment;
@@ -49,12 +50,24 @@ import com.huawei.hms.location.LocationSettingsStates;
 import com.huawei.hms.location.LocationSettingsStatusCodes;
 import com.huawei.hms.location.SettingsClient;
 import com.huawei.hms.support.account.result.AuthAccount;
-import com.huawei.hms.support.api.entity.location.geocoder.Address;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Locale;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -71,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private static Consumer consumer;
 
     private String currentLocation = "";
+    private String city = "";
 
     private SettingsClient settingsClient;
     private LocationRequest mLocationRequest;
@@ -157,10 +171,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         List<Location> locations = locationResult.getLocations();
                         if (!locations.isEmpty()) {
                             for (Location location : locations) {
-                                Log.v("Grocy",
-                                        "onLocationResult location[Longitude,Latitude,Accuracy]:" + location.getLongitude()
-                                                + "," + location.getLatitude() + "," + location.getAccuracy());
-                                getLastLocation();
+                                setCurrentLocation(location);
                             }
                         }
                     }
@@ -175,8 +186,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             };
         }
 
-        requestLocationUpdates();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestLocationUpdates();
     }
 
     @Override
@@ -209,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         .hide(activeFragment)
                         .show(profileFragment)
                         .commit();
+                profileFragment.onResume();
                 activeFragment = profileFragment;
                 return true;
         }
@@ -295,67 +311,75 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     @Override
                     public void onSuccess(Void aVoid) {
                         // TODO: Processing when the API call is successful.
-                        Log.v("Grocy", "requestLocationUpdates Success: ");
-                        getLastLocation();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(Exception e) {
                         // TODO: Processing when the API call fails.
-                        Log.v("Grocy", "requestLocationUpdates Failed: " + e.getMessage());
                     }
                 });
-    }
-
-    public void getLastLocation() {
-        // Obtain the last known location.
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if(location == null) {
-                    Log.v("Grocy", "getLastLocation Success, Location is NULL");
-                    return;
-                }
-
-                setCurrentLocation(location);
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(Exception e) {
-                Log.v("Grocy", "getLastLocation Failed");
-            }
-        });
-
     }
 
     public String getCurrentLocation() {
         return currentLocation;
     }
 
-    public void setCurrentLocation(Location location) {
-        GetFromLocationRequest getFromLocationRequest = new GetFromLocationRequest(location.getLatitude(), location.getLongitude(), 1);
-        Locale locale = new Locale("en", "ID");
-        GeocoderService geocoderService = LocationServices.getGeocoderService(MainActivity.this, locale);
-        geocoderService.getFromLocation(getFromLocationRequest)
-                .addOnSuccessListener(new OnSuccessListener<List<HWLocation>>() {
-                    @Override
-                    public void onSuccess(List<HWLocation> hwLocation) {
-                        for(HWLocation l : hwLocation) {
-                            currentLocation = l.getCity() + ", " + l.getCountryName();
-                            Log.v("Grocy", currentLocation);
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(Exception e) {
-                        Log.v("Grocy", "setCurrentLocation Failed");
-                    }
-                });
+    public String getCity() {
+        return city;
+    }
 
+    public void setCurrentLocation(Location location) {
+        final String ROOT_URL = "https://siteapi.cloud.huawei.com/mapApi/v1/siteService/reverseGeocode";
+        final String apiKey = "CwEAAAAAaU6+5KTDZR8YRorhLmmi9VVivZrzhQWfjeTauEcJz8XEKbmyexRZpW3kvqTRegnNrx0yqDnchb58lAKmsLZ5X4Gj39s=";
+        final String connection = "?key=";
+
+        final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+        JSONObject json = new JSONObject();
+
+        JSONObject loc = new JSONObject();
+        try {
+            loc.put("lng", location.getLongitude());
+            loc.put("lat", location.getLatitude());
+            json.put("location", loc);
+            json.put("radius", 10);
+        } catch (JSONException e) {
+
+        }
+        RequestBody body = RequestBody.create(JSON, String.valueOf(json));
+
+        OkHttpClient client = new OkHttpClient();
+        Request request =
+                null;
+        try {
+            request = new Request.Builder().url(ROOT_URL + connection + URLEncoder.encode(apiKey, "UTF-8"))
+                    .post(body)
+                    .build();
+        } catch (UnsupportedEncodingException e) {
+
+        }
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(response.body() != null) {
+                    try {
+                        JSONObject json = new JSONObject(response.body().string());
+                        city = json.getJSONArray("sites").getJSONObject(0).getJSONObject("address").getString("city");
+                        String country = json.getJSONArray("sites").getJSONObject(0).getJSONObject("address").getString("country");
+                        currentLocation = city + ", " + country;
+                    } catch (JSONException e) {
+
+                    }
+                }
+            }
+        });
     }
 
     private void getToken() {

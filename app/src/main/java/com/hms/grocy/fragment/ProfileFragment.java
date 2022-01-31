@@ -65,6 +65,11 @@ public class ProfileFragment extends Fragment {
     public void onResume() {
         super.onResume();
         tvLocation.setText(((MainActivity) getActivity()).getCurrentLocation());
+        if(((MainActivity) getActivity()).getCurrentLocation().equals("")) {
+            tvLocation.setVisibility(View.INVISIBLE);
+        }
+        else
+            tvLocation.setVisibility(View.VISIBLE);
     }
 
     private void doSignOut() {

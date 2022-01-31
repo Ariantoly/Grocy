@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hms.grocy.GroceriesActivity;
+import com.hms.grocy.MainActivity;
 import com.hms.grocy.NotificationActivity;
 import com.hms.grocy.adapter.CategoryAdapter;
 import com.hms.grocy.R;
@@ -181,7 +182,8 @@ public class HomeFragment extends Fragment {
 
     private void getTopGroceryStores() {
         getDataService = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-        Call<ArrayList<GroceryStore>> call = getDataService.getTopGroceryStores("Jakarta");
+        String city = ((MainActivity) getActivity()).getCity();
+        Call<ArrayList<GroceryStore>> call = getDataService.getTopGroceryStores(city);
         call.enqueue(new Callback<ArrayList<GroceryStore>>() {
             @Override
             public void onResponse(Call<ArrayList<GroceryStore>> call, Response<ArrayList<GroceryStore>> response) {

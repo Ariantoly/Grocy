@@ -26,6 +26,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    packagingOptions {
+        // Exclude the SO file on which the x86 platform depends.
+        exclude "lib/x86/libucs-credential.so"
+        // Exclude the SO file on which the x86_64 platform depends.
+        exclude "lib/x86_64/libucs-credential.so"
+    }
 }
 
 dependencies {
@@ -33,6 +40,7 @@ dependencies {
     implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
     implementation 'com.huawei.hms:hwid:6.1.0.302'
     implementation 'com.huawei.hms:location:6.3.0.300'
+    implementation 'com.huawei.hms:site:6.2.0.301'
     implementation 'com.huawei.hms:push:6.1.0.300'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
