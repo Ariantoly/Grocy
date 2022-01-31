@@ -1,4 +1,4 @@
-package com.hms.grocy;
+package com.hms.grocy.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.hms.grocy.MainActivity;
+import com.hms.grocy.R;
+import com.hms.grocy.SignInActivity;
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
@@ -26,6 +31,9 @@ public class ProfileFragment extends Fragment {
     private AccountAuthParams mAuthParam;
     private AuthService mAuthService;
 
+    private TextView tvName, tvEmail, tvLocation;
+    private ImageView imgUser;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,9 +46,25 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        authAccount = getActivity().getIntent().getParcelableExtra("authAccount");
+        authAccount = ((MainActivity) getActivity()).getAuthAccount();
+        tvName = view.findViewById(R.id.tv_name);
+        tvEmail = view.findViewById(R.id.tv_email);
+        tvLocation = view.findViewById(R.id.tv_location);
+        tvLocation.setText(((MainActivity) getActivity()).getCurrentLocation());
+        imgUser = view.findViewById(R.id.img_user);
+
+        tvName.setText(authAccount.getDisplayName());
+        tvEmail.setText(authAccount.getEmail());
+        if(!authAccount.getAvatarUri().toString().equals(""))
+            imgUser.setImageURI(authAccount.getAvatarUri());
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        tvLocation.setText(((MainActivity) getActivity()).getCurrentLocation());
     }
 
     private void doSignOut() {

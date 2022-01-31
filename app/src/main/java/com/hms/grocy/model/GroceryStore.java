@@ -1,21 +1,33 @@
-package com.hms.grocy;
+package com.hms.grocy.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GroceryStore {
+public class GroceryStore implements Serializable {
 
+    @SerializedName("id")
     private int id;
-    private String name;
-    private String address;
-    private String city;
-    private ArrayList<Grocery> grocies;
 
-    public GroceryStore(int id, String name, String address, String city, ArrayList<Grocery> grocies) {
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("address")
+    private String address;
+
+    @SerializedName("city")
+    private String city;
+
+    @SerializedName("groceries")
+    private ArrayList<Grocery> groceries;
+
+    public GroceryStore(int id, String name, String address, String city, ArrayList<Grocery> groceries) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.city = city;
-        this.grocies = grocies;
+        this.groceries = groceries;
     }
 
     public int getId() {
@@ -50,11 +62,15 @@ public class GroceryStore {
         this.city = city;
     }
 
-    public ArrayList<Grocery> getGrocies() {
-        return grocies;
+    public ArrayList<Grocery> getGroceries() {
+        return groceries;
     }
 
-    public void setGrocies(ArrayList<Grocery> grocies) {
-        this.grocies = grocies;
+    public void setGroceries(ArrayList<Grocery> groceries) {
+        this.groceries = groceries;
+    }
+
+    public int getGroceryCount() {
+        return groceries.size();
     }
 }

@@ -22,11 +22,20 @@
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/drawable/rounded_square_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/drawable/style.xml" value="0.26614583333333336" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/font/font.xml" value="0.28020833333333334" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_cart.xml" value="0.25" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_categories.xml" value="0.10416666666666667" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_category.xml" value="0.10416666666666667" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_change_password.xml" value="0.25" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_checkout.xml" value="0.1" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_forgot_password_otp.xml" value="0.264" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_groceries.xml" value="0.176" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_grocery_detail.xml" value="0.1" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_grocery_detail2.xml" value="0.11614583333333334" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_grocery_store.xml" value="0.264" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_notification.xml" value="0.16" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_sign_in.xml" value="0.152" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/activity_splash.xml" value="0.25" />
@@ -34,10 +43,16 @@
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/fragment_home.xml" value="0.24456521739130435" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/fragment_profile.xml" value="0.24456521739130435" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/fragment_store.xml" value="0.24456521739130435" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/input_dialog.xml" value="0.1" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_rv_carts.xml" value="0.264" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_rv_categories.xml" value="0.2105978260869565" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_rv_checkout.xml" value="0.1" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_rv_groceries.xml" value="0.264" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_rv_notifications.xml" value="0.2" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_rv_recommended.xml" value="0.1234375" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_rv_recommended_groceries.xml" value="0.264" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_rv_stores.xml" value="0.264" />
+        <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/item_spinner_delivery.xml" value="0.24048913043478262" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/layout_bg.xml" value="0.25" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/rv_categories_items.xml" value="0.176" />
         <entry key="..\:/Kuliah/Tugas Kuliah/Semester 5/Mobile Programming/AndroidStudioProjects/Grocy/app/src/main/res/layout/style.xml" value="0.25" />

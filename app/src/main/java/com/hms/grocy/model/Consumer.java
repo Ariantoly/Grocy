@@ -1,14 +1,31 @@
-package com.hms.grocy;
+package com.hms.grocy.model;
 
-public class Consumer {
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
+public class Consumer implements Serializable {
+
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("email")
     private String email;
+
+    @SerializedName("image")
     private String image;
 
     public Consumer(int id, String name, String email, String image) {
         this.id = id;
+        this.name = name;
+        this.email = email;
+        this.image = image;
+    }
+
+    public Consumer(String name, String email, String image) {
         this.name = name;
         this.email = email;
         this.image = image;

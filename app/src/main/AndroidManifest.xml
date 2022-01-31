@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hms.grocy">
     <!-- check network permissions -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- check wifi state -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,19 +16,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Grocy">
         <activity
+            android:name=".NotificationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CategoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GroceryStoreActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GroceryDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GroceriesActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ChangePasswordActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ForgotPasswordOtpActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ForgotPasswordActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SignUpActivity"
             android:exported="true" />
         <activity
             android:name=".SignInActivity"
@@ -41,9 +49,21 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name=".service.NotificationService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <meta-data
             android:name="com.huawei.hms.client.channel.androidMarket"
             android:value="false" />
+
+        <meta-data
+            android:name="com.huawei.messaging.default_notification_icon"
+            android:resource="@drawable/ic_grocy" />
     </application>
 
 </manifest>

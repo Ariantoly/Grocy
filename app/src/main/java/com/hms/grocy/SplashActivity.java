@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
+import com.hms.grocy.model.Consumer;
+import com.hms.grocy.network.PostDataService;
+import com.hms.grocy.network.RetrofitClientInstance;
 import com.huawei.hmf.tasks.OnFailureListener;
 import com.huawei.hmf.tasks.OnSuccessListener;
 import com.huawei.hmf.tasks.Task;
@@ -16,6 +20,10 @@ import com.huawei.hms.support.account.request.AccountAuthParamsHelper;
 import com.huawei.hms.support.account.result.AuthAccount;
 import com.huawei.hms.support.account.service.AccountAuthService;
 import com.huawei.hms.support.api.entity.common.CommonConstant;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -29,6 +37,8 @@ public class SplashActivity extends AppCompatActivity {
 
     // Define the log flag.
     private static final String TAG = "Grocy";
+
+    private PostDataService postDataService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +72,25 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthAccount authAccount) {
                 // The silent sign-in is successful. Process the returned AuthAccount object to obtain the HUAWEI ID information.
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                intent.putExtra("authAccount", authAccount);
-                startActivity(intent);
-                finish();
+                postDataService = RetrofitClientInstance.getRetrofitInstance().create(PostDataService.class);
+                Call<Consumer> call = postDataService.getConsumer(authAccount.getEmail());
+                call.enqueue(new Callback<Consumer>() {
+                    @Override
+                    public void onResponse(Call<Consumer> call, Response<Consumer> response) {
+                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                        intent.putExtra("authAccount", authAccount);
+                        intent.putExtra("account", response.body());
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Consumer> call, Throwable t) {
+                        Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
             }
         });
         task.addOnFailureListener(new OnFailureListener() {

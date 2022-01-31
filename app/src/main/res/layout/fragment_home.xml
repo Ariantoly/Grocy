@@ -1,93 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/white">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:paddingBottom="20dp"
+        android:orientation="vertical"
+        android:background="@color/white">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="8dp"
-            android:drawableLeft="@drawable/ic_search"
-            android:hint="Search"
-            android:fontFamily="@font/montserrat_regular"
-            android:textSize="12sp"
-            android:drawablePadding="10dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/rounded_background"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:src="@drawable/ic_notification"
-            android:background="@color/white"/>
-
-    </LinearLayout>
-
-    <com.synnapps.carouselview.CarouselView
-        android:id="@+id/carousel"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:fillColor="@color/white"
-        app:pageColor="@color/orange"
-        app:slideInterval="3000"
-        android:layout_marginBottom="20dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/categories"
-            android:textColor="@color/orange"
-            android:fontFamily="@font/montserrat_semibold"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_categories"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/recommended"
-            android:textColor="@color/orange"
-            android:fontFamily="@font/montserrat_semibold"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"/>
+            android:padding="20dp"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_recommended"
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp"
+                android:drawableLeft="@drawable/ic_search"
+                android:hint="Search"
+                android:inputType="text"
+                android:imeOptions="actionGo"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="12sp"
+                android:drawablePadding="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rounded_background"/>
+
+            <ImageButton
+                android:id="@+id/btn_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:src="@drawable/ic_notification"
+                android:background="@color/white"/>
+
+        </LinearLayout>
+
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/carousel"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="180dp"
+            app:fillColor="@color/white"
+            app:pageColor="@color/orange"
+            app:slideInterval="3000"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/categories"
+                android:textColor="@color/orange"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textSize="16sp"
+                android:layout_marginHorizontal="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_recommended"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recommended"
+                android:textColor="@color/orange"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textSize="16sp"
+                android:layout_marginHorizontal="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recommended"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_top_grocery_stores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Grocery Stores"
+                android:textColor="@color/orange"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textSize="16sp"
+                android:layout_marginHorizontal="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_top_grocery_stores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

@@ -10,4 +10,9 @@
     <string name="search">Search</string>
     <string name="categories">Categories</string>
     <string name="recommended">Recommended</string>
+    <string name="groceries">Groceries</string>
+    <string-array name="delivery_type">
+        <item>Delivery</item>
+        <item>Take Away</item>
+    </string-array>
 </resources>
